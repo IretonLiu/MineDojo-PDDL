@@ -128,7 +128,13 @@ public class ObservationFromNearbyEntitiesImplementation extends HandlerBase imp
                     if (e instanceof EntityItem)
                     {
                         ItemStack is = ((EntityItem)e).getEntityItem();
-                        MineRLTypeHelper.writeItemStackToJson(is, jsent);
+                        DrawItem di = MinecraftTypeHelper.getDrawItemFromItemStack(is);
+                        if (di.getColour() != null)
+                            jsent.addProperty("colour", di.getColour().value());
+                        if (di.getVariant() != null)
+                            jsent.addProperty("variant", di.getVariant().getValue());
+                        name = di.getType();
+                        jsent.addProperty("quantity", is.getCount());
                     }
                     else if (e instanceof EntityLivingBase)
                     {
