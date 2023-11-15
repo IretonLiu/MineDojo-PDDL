@@ -26,7 +26,8 @@ class CMDExecutor:
         "setblock",
         "spreadplayers",
         "gamemode",
-        "give"
+        "give",
+        "entitydata",
     }
 
     def __init__(self, world, raise_error_on_invalid_cmds: bool = False):
